@@ -1,0 +1,28 @@
+@import '../../utils/variables.scss';
+
+.container {
+  background-color: white;
+  border-radius: $radius;
+  width: 41%;
+}
+
+.table {
+  border-radius: $radius;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tableHeader {
+  background-color: $grid_header;
+  padding: 1em;
+  text-align: left;
+}
+
+th, td {
+  padding: .5em;
+}
+
+tr {
+  border-bottom: 1px solid $border;
+}

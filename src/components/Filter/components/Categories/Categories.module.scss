@@ -3,5 +3,12 @@
 .container {
   background-color: white;
   border-radius: $radius;
+  margin: $margin;
   padding: $padding;
+  flex-basis: 50%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
 }

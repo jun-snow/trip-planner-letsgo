@@ -1,10 +1,18 @@
 import React from 'react';
+import Radio from '../Radio';
 import styles from './Categories.module.scss';
 
 const Categories = () => {
   return (
     <div className={styles.container}>
-      Categories
+      <div className={styles.header}>
+        Filter
+      </div>
+      <div className={styles.body}>
+        <Radio>None</Radio>
+        <Radio>Vacation</Radio>
+        <Radio>Business</Radio>
+      </div>
     </div>
   );
 }

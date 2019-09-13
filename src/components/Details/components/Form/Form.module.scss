@@ -1,0 +1,7 @@
+@import '../../../../utils/variables.scss';
+
+#form {
+  display: flex;
+  flex-direction: column;
+  padding: $padding;
+}

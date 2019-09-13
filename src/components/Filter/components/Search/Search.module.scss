@@ -1,7 +1,14 @@
 @import '../../../../utils/variables.scss';
 
 .container {
+  display: flex;
+  align-items: center;
   background-color: white;
   border-radius: $radius;
+  margin: $margin;
   padding: $padding;
+}
+
+.searchBar {
+  padding: 5px;
 }

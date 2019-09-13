@@ -1,7 +1,19 @@
 @import '../../../../utils/variables.scss';
 
 .container {
+  display: flex;
   background-color: white;
   border-radius: $radius;
+  margin: $margin;
   padding: $padding;
+  align-items: center;
+}
+
+.addTripButton {
+  color: $buttons;
+}
+
+.addTripText {
+  font-size: 1.5em;
+  padding-left: 10px;
 }

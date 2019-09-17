@@ -2,8 +2,8 @@ export const saveState = (state) => {
   try {
     const newState = JSON.stringify(state);
     localStorage.setItem('state', newState);
-  } catch {
-    // ignore write errors
+  } catch (err) {
+    console.log(err);
   }
 };
 

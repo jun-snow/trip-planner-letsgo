@@ -5,13 +5,14 @@
   border-radius: $radius;
   flex-grow: 1;
   margin: $margin;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 
 .table {
   border-radius: $radius $radius 0 0;
   border-collapse: collapse;
   width: 100%;
-  overflow: hidden;
 }
 
 .headerRow {
@@ -40,4 +41,15 @@ th, td {
 .tableRow:focus {
   background-color: $border;
   outline: none;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

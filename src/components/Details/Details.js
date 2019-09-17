@@ -4,7 +4,8 @@ import {
   addTrip,
   selectTrip,
   updateTrip,
-  showDetails
+  showDetails,
+  deleteTrip
 } from '../../actions';
 import Form from './components/Form';
 import Todos from './components/Todos';
@@ -17,7 +18,8 @@ const Details = ({
   selectedTrip,
   handleSelectTrip,
   updateTripDetails,
-  handleShowDetails
+  handleShowDetails,
+  handleDeleteTrip
 }) => {
   
   const [todos, setTodos] = useState([]);
@@ -34,6 +36,7 @@ const Details = ({
         handleSelectTrip={handleSelectTrip}
         updateTripDetails={updateTripDetails}
         handleShowDetails={handleShowDetails}
+        handleDeleteTrip={handleDeleteTrip}
       />
       <div className={styles.divider}></div>
       <Todos
@@ -62,6 +65,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleShowDetails: () => {
     dispatch(showDetails());
+  },
+  handleDeleteTrip: (payload) => {
+    dispatch(deleteTrip(payload));
   }
 });
 

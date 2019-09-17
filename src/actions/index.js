@@ -2,6 +2,7 @@ import {
   ADD_TRIP,
   SELECT_TRIP,
   UPDATE_TRIP,
+  DELETE_TRIP,
   SHOW_DETAILS,
   SEARCH_TRIPS
 } from '../constants/action-types';
@@ -18,6 +19,11 @@ export const selectTrip = (payload) => ({
 
 export const updateTrip = (payload) => ({
   type: UPDATE_TRIP,
+  payload
+});
+
+export const deleteTrip = (payload) => ({
+  type: DELETE_TRIP,
   payload
 });
 

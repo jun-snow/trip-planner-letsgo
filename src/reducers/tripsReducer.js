@@ -1,4 +1,8 @@
-import { ADD_TRIP, UPDATE_TRIP } from '../constants/action-types';
+import {
+  ADD_TRIP,
+  UPDATE_TRIP,
+  DELETE_TRIP
+} from '../constants/action-types';
 import { getId } from '../utils/helpers';
 
 const tripsReducer = (state = [], action) => {
@@ -25,6 +29,9 @@ const tripsReducer = (state = [], action) => {
       const newState = [...state];
       newState[findId] = payload;
       return newState || state;
+    case DELETE_TRIP:
+      // filter out trip based on id
+      return state.filter(trip => trip.id !== payload) || state;
     default:
       return state;
   }

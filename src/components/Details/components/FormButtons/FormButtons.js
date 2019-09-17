@@ -3,10 +3,17 @@ import React from 'react';
 const FormButtons = ({
   selectedTrip,
   handleSelectTrip,
-  handleShowDetails
+  handleShowDetails,
+  handleDeleteTrip
 }) => {
 
   const handleCancel = () => {
+    handleShowDetails(false);
+    handleSelectTrip(null);
+  }
+
+  const handleDelete = () => {
+    handleDeleteTrip(selectedTrip);
     handleShowDetails(false);
     handleSelectTrip(null);
   }
@@ -17,7 +24,13 @@ const FormButtons = ({
         type='button'
         onClick={() => handleCancel()}
       >Cancel</button>
-      {selectedTrip && <button type='button'>Delete</button>}
+      {selectedTrip &&
+      <button
+        type='button'
+        onClick={() => handleDelete()}
+      >
+        Delete
+      </button>}
     </div>
   );
 }

@@ -12,7 +12,8 @@ const Form = ({
   selectedTrip,
   handleSelectTrip,
   updateTripDetails,
-  handleShowDetails
+  handleShowDetails,
+  handleDeleteTrip
 }) => {
 
   const initialState = {
@@ -58,10 +59,7 @@ const Form = ({
     // if a trip has been selected, update existing trip
     // if not, create new trip
     if (selectedTrip) {
-      updateTripDetails({
-        ...payload,
-        id: selectedTrip
-      });
+      updateTripDetails(selectedTrip);
     } else {
       addNewTripDetails(payload);
     }
@@ -161,6 +159,7 @@ const Form = ({
         selectedTrip={selectedTrip}
         handleSelectTrip={handleSelectTrip}
         handleShowDetails={handleShowDetails}
+        handleDeleteTrip={handleDeleteTrip}
       />
     </form>
   );

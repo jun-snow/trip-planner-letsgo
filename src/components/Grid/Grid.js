@@ -7,6 +7,7 @@ import styles from './Grid.module.scss';
 
 const Grid = ({
   trips,
+  details,
   handleClickTrip,
   handleShowDetails,
   filterTrips
@@ -36,7 +37,7 @@ const Grid = ({
         return (
           <tr
             key={trip.id}
-            className={activeRow === i ? styles.activeRow : styles.tableRow}
+            className={activeRow === i && details ? styles.activeRow : styles.tableRow}
             onClick={() => handleDetails(trip.id, i)}
           >
             <td>{trip.title}</td>

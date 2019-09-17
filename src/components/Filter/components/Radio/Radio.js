@@ -9,8 +9,11 @@ const Radio = ({
   check,
   setCheck
 }) => {
+  // convert 'None' children prop to empty string for filtering purposes
   const filterValue = children === 'None' ? '' : children;
 
+  // assign input value to check to initialize checked status while keeping it dynamic
+  // send category filter to reducer
   const handleSelect = (val) => {
     setCheck(val);
     handleFilterTrips(filterValue);

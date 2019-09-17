@@ -5,10 +5,14 @@ const todoReducer = (state = [], action) => {
     case ADD_TODO:
       return [...state, action.payload] || [];
     case DELETE_TODO:
-      const filtered = state.filter(todo => {
-        return todo.id !== action.payload;
-      })
-      return filtered || state;
+      const newState = [...state];
+      newState.forEach(todo => {
+        if (todo.id === action.payload) {
+          todo.completed = !todo.completed
+        }
+      });
+
+      return newState || state;
     default:
       return state;
   }

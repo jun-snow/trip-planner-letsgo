@@ -27,8 +27,6 @@ const Details = ({
   handleDeleteTodo
 }) => {
   
-  // const [todos, setTodos] = useState([]);
-
   return (
     <section
       className={details ? styles.container : styles.hidden}

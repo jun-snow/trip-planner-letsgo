@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormButtons from '../FormButtons';
-import { useSelectedTrip } from './useSelectedTrip';
+import { useSelectedTrip, useStatusUpdate } from './hooks';
 import { currentDate } from '../../../../utils/helpers';
 import uuid from 'uuid/v4';
 import styles from './Form.module.scss';
@@ -24,7 +24,8 @@ const Form = ({
     start: currentDate(),
     end: currentDate(),
     category: '',
-    reminder: false
+    reminder: false,
+    status: 'Created'
   }
 
   const [tripDetails, setTripDetails] = useState(initialState);
@@ -35,11 +36,14 @@ const Form = ({
     start,
     end,
     category,
-    reminder
+    reminder,
+    status
   } = tripDetails;
 
   // if a trip is selected, populate form with that trip by matching id
   useSelectedTrip(trips, selectedTrip, setTripDetails);
+  // update trip status based on item completion
+  useStatusUpdate(trips, selectedTrip, todos, setTripDetails);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -53,7 +57,7 @@ const Form = ({
       end,
       category,
       reminder,
-      todos
+      status
       };
     
     // if a trip has been selected, update existing trip
@@ -75,7 +79,8 @@ const Form = ({
   return (
     <form id={styles.form} onSubmit={(e) => submitForm(e)}>
       <div className={styles.title}>
-        Trip Details
+        <span>Trip Details - </span>
+        <span>{status}</span>
       </div>
       <input
         placeholder='Title'

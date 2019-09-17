@@ -14,9 +14,10 @@ const Todos = ({
     e.preventDefault();
 
     const newTodo = {
-      selectedTrip: selectedTrip,
+      tripId: selectedTrip,
       id: uuid(),
-      item
+      item,
+      completed: false
     };
     
     handleAddTodo(newTodo);
@@ -29,7 +30,7 @@ const Todos = ({
 
   const renderTodos = () => {
     const filteredTodos = todos.filter(todo => {
-      return todo.selectedTrip === selectedTrip;
+      return todo.tripId === selectedTrip;
     });
 
     return (
@@ -44,6 +45,7 @@ const Todos = ({
               <input
                 id={todo.item}
                 type='checkbox'
+                checked={todo.completed}
                 onChange={() => removeTodo(todo.id)}
               />
               {todo.item}
@@ -57,7 +59,6 @@ const Todos = ({
   return (
     <div className={styles.container}>
       Items Needed
-      {/* List of todos - use checkbox and gray/disabled coloring for completed items */}
       <form id={styles.form} onSubmit={(e) => addTodo(e)}>
         {renderTodos()}
         <input

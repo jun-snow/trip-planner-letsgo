@@ -8,7 +8,7 @@ import { getId } from '../utils/helpers';
 const tripsReducer = (state = [], action) => {
   const { payload } = action;
   switch (action.type) {
-    
+
     case ADD_TRIP:
       const tripDetails = {
         id: payload.id,
@@ -19,7 +19,7 @@ const tripsReducer = (state = [], action) => {
         end: payload.end,
         category: payload.category,
         reminder: payload.reminder,
-        todos: payload.todos
+        status: payload.status
       };
       return [...state, tripDetails] || [];
 

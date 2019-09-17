@@ -34,13 +34,14 @@ th, td {
   cursor: pointer;
 }
 
-.tableRow:hover {
-  background-color: $border
-}
-
-.tableRow:focus {
+.activeRow {
   background-color: $border;
   outline: none;
+  cursor: pointer;
+}
+
+.tableRow:hover {
+  background-color: $border
 }
 
 ::-webkit-scrollbar {

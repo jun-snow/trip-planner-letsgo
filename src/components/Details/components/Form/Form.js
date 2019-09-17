@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FormButtons from '../FormButtons';
+import { useSelectedTrip } from './useSelectedTrip';
 import { currentDate } from '../../../../utils/helpers';
 import uuid from 'uuid/v4';
 import styles from './Form.module.scss';
@@ -36,34 +37,7 @@ const Form = ({
   } = tripDetails;
 
   // if a trip is selected, populate form with that trip by matching id
-  useEffect(() => {
-    if (selectedTrip !== null) {
-      const filtered = trips.filter(trip => trip.id === selectedTrip)[0];
-      setTripDetails({
-        id: filtered.id,
-        title: filtered.title,
-        destination: filtered.destination,
-        description: filtered.description,
-        start: filtered.start,
-        end: filtered.end,
-        category: filtered.category,
-        reminder: filtered.reminder
-      });
-    } else {
-      const initialState = {
-        id: null,
-        title: '',
-        destination: '',
-        description: '',
-        start: currentDate(),
-        end: currentDate(),
-        category: 'None',
-        reminder: false
-      }
-      
-      setTripDetails(initialState);
-    }
-  }, [trips, selectedTrip]);
+  useSelectedTrip(trips, selectedTrip, setTripDetails);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -182,7 +156,9 @@ const Form = ({
         Reminder
       </label>
 
-      <FormButtons selectedTrip={selectedTrip} />
+      <FormButtons
+        selectedTrip={selectedTrip}
+      />
     </form>
   );
 }

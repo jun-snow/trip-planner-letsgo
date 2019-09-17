@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { selectTrip } from '../../actions';
 import { showDetails } from '../../actions';
@@ -11,9 +11,11 @@ const Grid = ({
   handleShowDetails,
   filterTrips
 }) => {
+  const [activeRow, setActiveRow] = useState(null);
 
   // display details panel and select unique trip id for update use
-  const handleDetails = (id) => {
+  const handleDetails = (id, i) => {
+    setActiveRow(i);
     handleShowDetails();
     handleClickTrip(id);
   }
@@ -30,13 +32,12 @@ const Grid = ({
     }
 
     return (
-      tripList.map(trip => {
+      tripList.map((trip, i) => {
         return (
           <tr
             key={trip.id}
-            className={styles.tableRow}
-            onClick={() => handleDetails(trip.id)}
-            tabIndex={0}
+            className={activeRow === i ? styles.activeRow : styles.tableRow}
+            onClick={() => handleDetails(trip.id, i)}
           >
             <td>{trip.title}</td>
             <td>{trip.destination}</td>

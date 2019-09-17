@@ -8,8 +8,8 @@ import { getId } from '../utils/helpers';
 const tripsReducer = (state = [], action) => {
   const { payload } = action;
   switch (action.type) {
+    
     case ADD_TRIP:
-
       const tripDetails = {
         id: payload.id,
         title: payload.title,
@@ -22,6 +22,7 @@ const tripsReducer = (state = [], action) => {
         todos: payload.todos
       };
       return [...state, tripDetails] || [];
+
     case UPDATE_TRIP:
       // get index of the trip to be updated
       // overwrite object at that index with new trip
@@ -29,9 +30,11 @@ const tripsReducer = (state = [], action) => {
       const newState = [...state];
       newState[findId] = payload;
       return newState || state;
+
     case DELETE_TRIP:
       // filter out trip based on id
       return state.filter(trip => trip.id !== payload) || state;
+    
     default:
       return state;
   }

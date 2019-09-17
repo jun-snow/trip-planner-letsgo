@@ -8,7 +8,8 @@ const store = createStore(rootReducer, savedState);
 
 store.subscribe(_.throttle(() => {
   saveState({
-    trips: store.getState().trips
+    trips: store.getState().trips,
+    todos: store.getState().todos
   });
 }, 1000));
 

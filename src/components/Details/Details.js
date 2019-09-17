@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   addTrip,
   selectTrip,
   updateTrip,
   showDetails,
-  deleteTrip
+  deleteTrip,
+  addTodo,
+  deleteTodo
 } from '../../actions';
 import Form from './components/Form';
 import Todos from './components/Todos';
@@ -19,10 +21,13 @@ const Details = ({
   handleSelectTrip,
   updateTripDetails,
   handleShowDetails,
-  handleDeleteTrip
+  handleDeleteTrip,
+  todos,
+  handleAddTodo,
+  handleDeleteTodo
 }) => {
   
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
   return (
     <section
@@ -41,7 +46,9 @@ const Details = ({
       <div className={styles.divider}></div>
       <Todos
         todos={todos}
-        setTodos={setTodos}
+        handleAddTodo={handleAddTodo}
+        selectedTrip={selectedTrip}
+        handleDeleteTodo={handleDeleteTodo}
       />
     </section>
   );
@@ -50,7 +57,8 @@ const Details = ({
 const mapStateToProps = (state) => ({
   details: state.showDetails,
   trips: state.trips,
-  selectedTrip: state.selectedTrip
+  selectedTrip: state.selectedTrip,
+  todos: state.todos
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -68,6 +76,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleDeleteTrip: (payload) => {
     dispatch(deleteTrip(payload));
+  },
+  handleAddTodo: (payload) => {
+    dispatch(addTodo(payload));
+  },
+  handleDeleteTodo: (payload) => {
+    dispatch(deleteTodo(payload));
   }
 });
 

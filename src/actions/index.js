@@ -5,7 +5,9 @@ import {
   DELETE_TRIP,
   SHOW_DETAILS,
   SEARCH_TRIPS,
-  FILTER_TRIPS
+  FILTER_TRIPS,
+  ADD_TODO,
+  DELETE_TODO
 } from '../constants/action-types';
 
 export const addTrip = (payload) => ({
@@ -42,3 +44,13 @@ export const filterTrips = (payload) => ({
   type: FILTER_TRIPS,
   payload
 });
+
+export const addTodo = (payload) => ({
+  type: ADD_TODO,
+  payload
+});
+
+export const deleteTodo = (payload) => ({
+  type: DELETE_TODO,
+  payload
+})

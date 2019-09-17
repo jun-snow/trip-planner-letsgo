@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import { filterTrips } from '../../../../actions';
 import styles from './Radio.module.scss';
 
-const Radio = ({ children, handleFilterTrips }) => {
-  
+const Radio = ({
+  children,
+  handleFilterTrips,
+  check,
+  setCheck
+}) => {
   const filterValue = children === 'None' ? '' : children;
+
+  const handleSelect = (val) => {
+    setCheck(val);
+    handleFilterTrips(filterValue);
+  }
 
   return (
     <div className={styles.container}>
@@ -13,9 +22,10 @@ const Radio = ({ children, handleFilterTrips }) => {
         type='radio'
         id={children}
         name='filter'
+        checked={check === filterValue}
         value={filterValue}
         className={styles.radio}
-        onChange={() => handleFilterTrips(filterValue)}
+        onChange={(e) => handleSelect(e.target.value)}
       /> 
       <label
         htmlFor={children}

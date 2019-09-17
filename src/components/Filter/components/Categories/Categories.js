@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Radio from '../Radio';
 import styles from './Categories.module.scss';
 
 const Categories = () => {
+  const [check, setCheck] = useState('');
 
   return (
     <div className={styles.container}>
@@ -13,13 +14,22 @@ const Categories = () => {
         </p>
       </div>
       <div className={styles.body}>
-        <Radio>
+        <Radio
+          check={check}
+          setCheck={setCheck}
+        >
           None
         </Radio>
-        <Radio>
+        <Radio
+          check={check}
+          setCheck={setCheck}
+        >
           Vacation
         </Radio>
-        <Radio>
+        <Radio
+          check={check}
+          setCheck={setCheck}
+        >
           Business
         </Radio>
       </div>

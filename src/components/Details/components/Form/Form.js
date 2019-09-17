@@ -79,8 +79,8 @@ const Form = ({
   return (
     <form id={styles.form} onSubmit={(e) => submitForm(e)}>
       <div className={styles.title}>
-        <span>Trip Details - </span>
-        <span>{status}</span>
+        <span>Trip Details</span>
+        <span>{selectedTrip ? ` - ${status}` : ''}</span>
       </div>
       <input
         placeholder='Title'

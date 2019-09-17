@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: $padding;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  max-height: 13em;
+  max-height: 11em;
   max-width: 13em;
   overflow-x: hidden;
   overflow-y: scroll;

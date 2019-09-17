@@ -1,16 +1,12 @@
-const initialState = {
-  title: '',
-  destination: '',
-  description: '',
-  start: null,
-  end: null,
-  category: '',
-  reminder: null,
-  todos: []
-}; 
+import { combineReducers } from 'redux';
+import showDetailsReducer from './showDetailsReducer';
+import tripsReducer from './tripsReducer';
+import selectReducer from './selectReducer';
 
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
+const rootReducer = combineReducers({
+  showDetails: showDetailsReducer,
+  trips: tripsReducer,
+  selectedTrip: selectReducer
+});
 
 export default rootReducer;

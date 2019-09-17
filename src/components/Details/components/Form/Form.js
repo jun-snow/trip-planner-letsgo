@@ -1,21 +1,117 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FormButtons from '../FormButtons';
+import { currentDate } from '../../../../utils/helpers';
+import uuid from 'uuid/v4';
 import styles from './Form.module.scss';
 
-const Form = () => {
-  return (
-    <form id={styles.form}>
+const Form = ({
+  trips,
+  addNewTripDetails,
+  todos,
+  selectedTrip,
+  handleSelectTrip,
+  updateTripDetails
+}) => {
 
+  const initialState = {
+    id: null,
+    title: '',
+    destination: '',
+    description: '',
+    start: currentDate(),
+    end: currentDate(),
+    category: 'None',
+    reminder: false
+  }
+
+  const [tripDetails, setTripDetails] = useState(initialState);
+  const {
+    title,
+    destination,
+    description,
+    start,
+    end,
+    category,
+    reminder
+  } = tripDetails;
+
+  // if a trip is selected, populate form with that trip by matching id
+  useEffect(() => {
+    if (selectedTrip !== null) {
+      const filtered = trips.filter(trip => trip.id === selectedTrip)[0];
+      setTripDetails({
+        id: filtered.id,
+        title: filtered.title,
+        destination: filtered.destination,
+        description: filtered.description,
+        start: filtered.start,
+        end: filtered.end,
+        category: filtered.category,
+        reminder: filtered.reminder
+      });
+    }
+  }, [trips, selectedTrip]);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      id: uuid(),
+      title,
+      destination,
+      description,
+      start,
+      end,
+      category,
+      reminder,
+      todos
+      };
+    
+    // if a trip has been selected, update existing trip
+    // if not, create new trip
+    if (selectedTrip) {
+      updateTripDetails({
+        ...payload,
+        id: selectedTrip
+      });
+    } else {
+      addNewTripDetails(payload);
+    }
+
+    // initialize form and clear selected id after submission
+    handleSelectTrip(null);
+    setTripDetails({...initialState});
+  };
+
+  return (
+    <form id={styles.form} onSubmit={(e) => submitForm(e)}>
+      <div className={styles.title}>
+        Trip Details
+      </div>
       <input
         placeholder='Title'
+        value={title}
+        onChange={(e) => setTripDetails({
+          ...tripDetails, title: e.target.value
+        })}
+        required
       />
 
       <input
         placeholder='Destination'
+        value={destination}
+        onChange={(e) => setTripDetails({
+          ...tripDetails, destination: e.target.value
+        })}
+        required
       />
 
       <input
         placeholder='Description'
+        value={description}
+        onChange={(e) => setTripDetails({
+          ...tripDetails, description: e.target.value
+        })}
       />
 
       <label htmlFor='startDate'>
@@ -23,6 +119,11 @@ const Form = () => {
         <input
           type='date'
           id='startDate'
+          min={currentDate()}
+          value={start}
+          onChange={(e) => setTripDetails({
+            ...tripDetails, start: e.target.value
+          })}
         />
       </label>
 
@@ -31,10 +132,20 @@ const Form = () => {
         <input
           type='date'
           id='endDate'
+          min={start}
+          value={end}
+          onChange={(e) => setTripDetails({
+            ...tripDetails, end: e.target.value
+          })}
         />
       </label>
 
-      <select>
+      <select
+        onChange={(e) => setTripDetails({
+          ...tripDetails, category: e.target.value
+        })}
+        value={category}
+      >
         <option value='None'>
           None
         </option>
@@ -50,6 +161,10 @@ const Form = () => {
         <input
           type='checkbox'
           id='reminder'
+          checked={reminder}
+          onChange={() => setTripDetails({
+            ...tripDetails, reminder: !reminder
+          })}
         />
         Reminder
       </label>

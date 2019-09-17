@@ -5,11 +5,11 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <input
-        className={styles.searchBar}
-        placeholder='Search'
+        className={styles.search}
+        placeholder='Search...'
       />
       <button
-      className={styles.searchButton}
+        className={styles.button}
       >
         Go
       </button>

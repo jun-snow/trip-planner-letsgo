@@ -3,26 +3,41 @@
 .container {
   background-color: white;
   border-radius: $radius;
-  flex-basis: 41%;
+  flex-grow: 1;
+  margin: $margin;
 }
 
 .table {
-  border-radius: $radius;
+  border-radius: $radius $radius 0 0;
   border-collapse: collapse;
   width: 100%;
   overflow: hidden;
 }
 
-.tableHeader {
+.headerRow {
   background-color: $grid_header;
   padding: 1em;
+  letter-spacing: 1.5px;
   text-align: left;
+  cursor: default;
 }
 
 th, td {
-  padding: .5em;
+  padding: .5em 1em;
+  max-width: 15em;
+  word-wrap: break-word;
 }
 
-tr {
+.tableRow {
   border-bottom: 1px solid $border;
+  cursor: pointer;
+}
+
+.tableRow:hover {
+  background-color: $border
+}
+
+.tableRow:focus {
+  background-color: $border;
+  outline: none;
 }

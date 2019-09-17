@@ -3,9 +3,9 @@ import React from 'react';
 const FormButtons = () => {
   return (
     <div>
-      <button>Save</button>
-      <button>Cancel</button>
-      <button>Delete</button>
+      <button type='submit'>Save</button>
+      <button type='button'>Cancel</button>
+      <button type='button'>Delete</button>
     </div>
   );
 }

@@ -8,6 +8,7 @@ Hosted on [AWS S3](http://trip-planner-letsgo.s3-website-us-west-1.amazonaws.com
 - React
 - Redux
 - SCSS
+- CSS modules
 
 
 **Users can:**

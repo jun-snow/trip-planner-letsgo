@@ -25,9 +25,16 @@
 }
 
 th, td {
-  padding: .5em 1em;
+  padding: .5em 0 .5em 0;
   max-width: 15em;
   word-wrap: break-word;
+}
+
+.first {
+  padding-left: $padding;
+  svg {
+    color: $header;
+  }
 }
 
 .tableRow {

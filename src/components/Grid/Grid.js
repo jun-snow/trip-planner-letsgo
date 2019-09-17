@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { selectTrip, showDetails } from '../../actions';
 import { getDuration } from '../../utils/helpers';
 import styles from './Grid.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faExclamation } from '@fortawesome/free-solid-svg-icons';
+
 
 const Grid = ({
   trips,
@@ -22,6 +25,10 @@ const Grid = ({
     handleClickTrip(id);
   }
 
+  const renderIcon = (name) => {
+    return <FontAwesomeIcon icon={name} />;
+  }
+
   // create copy of trip state and apply filters before rendering
   const renderTrips = () => {
     let tripList = [...trips];
@@ -35,7 +42,6 @@ const Grid = ({
       // filter title and destination with search query
       tripList = tripList.filter(trip => {
         const { title, destination, id } = trip;
-
         // check if trip ID matches any of the todos
         let todoMatch = false;
         for (let i of todoID) {
@@ -57,15 +63,19 @@ const Grid = ({
 
     return (
       tripList.map((trip, i) => {
+        const { id, title, destination, start, end, reminder } = trip;
         return (
           <tr
-            key={trip.id}
+            key={id}
             className={activeRow === i && details ? styles.activeRow : styles.tableRow}
-            onClick={() => handleDetails(trip.id, i)}
+            onClick={() => handleDetails(id, i)}
           >
-            <td>{trip.title}</td>
-            <td>{trip.destination}</td>
-            <td>{getDuration(trip.start, trip.end)} days</td>
+            <td className={styles.first}>
+              {reminder ? renderIcon(faExclamation) : ''}
+            </td>
+            <td>{title}</td>
+            <td>{destination}</td>
+            <td>{getDuration(start, end)} days</td>
           </tr>
         );
       })
@@ -77,6 +87,9 @@ const Grid = ({
       <table className={styles.table}>
         <thead>
           <tr className={styles.headerRow}>
+            <th className={styles.first}>
+              {renderIcon(faBell)}
+            </th>
             <th>Trip Title</th>
             <th>Destination</th>
             <th>Duration</th>

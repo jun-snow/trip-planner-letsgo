@@ -1,3 +1,23 @@
+## Trip Planner - Let's Go
+
+This is the front end component of the Trip Planner application.
+Hosted on [AWS S3](http://trip-planner-letsgo.s3-website-us-west-1.amazonaws.com/).
+
+**Language/Frameworks/Libraries used:**
+- Javascript
+- React
+- Redux
+- SCSS
+
+
+**Users can:**
+- Add/edit their trip information
+- Create a todo list for each trip
+- Filter trip title, destination, and todo items using the search bar
+- Filter trips based on category with the radio menu
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -16,7 +16,7 @@ const Categories = () => {
         <Radio>
           None
         </Radio>
-        <Radio >
+        <Radio>
           Vacation
         </Radio>
         <Radio>

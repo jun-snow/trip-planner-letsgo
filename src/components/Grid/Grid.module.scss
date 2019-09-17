@@ -33,6 +33,7 @@ th, td {
 .tableRow {
   border-bottom: 1px solid $border;
   cursor: pointer;
+  transition-duration: .3s;
 }
 
 .activeRow {
@@ -52,6 +53,6 @@ th, td {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: rgba(0,0,0,.5);
+  background-color: #25325ddb;
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

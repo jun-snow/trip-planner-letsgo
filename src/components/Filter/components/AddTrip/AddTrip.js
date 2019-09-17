@@ -7,7 +7,7 @@ const AddTrip = ({ handleShowDetails, handleSelectTrip }) => {
 
   const handleAddTrip = () => {
     handleSelectTrip(null);
-    handleShowDetails();
+    handleShowDetails(true);
   }
   return (
     <div className={styles.container}>
@@ -24,16 +24,13 @@ const AddTrip = ({ handleShowDetails, handleSelectTrip }) => {
   );
 }
 
-const mapStateToProps = (state) => ({
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  handleShowDetails: () => {
-    dispatch(showDetails());
+  handleShowDetails: (payload) => {
+    dispatch(showDetails(payload));
   },
   handleSelectTrip: (payload) => {
     dispatch(selectTrip(payload));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTrip);
+export default connect(null, mapDispatchToProps)(AddTrip);

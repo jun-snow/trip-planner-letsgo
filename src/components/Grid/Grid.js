@@ -16,7 +16,7 @@ const Grid = ({
   // display details panel and select unique trip id for update use
   const handleDetails = (id, i) => {
     setActiveRow(i);
-    handleShowDetails();
+    handleShowDetails(true);
     handleClickTrip(id);
   }
 
@@ -76,8 +76,8 @@ const mapDispatchToProps = (dispatch) => ({
   handleClickTrip: (payload) => {
     dispatch(selectTrip(payload));
   },
-  handleShowDetails: () => {
-    dispatch(showDetails());
+  handleShowDetails: (payload) => {
+    dispatch(showDetails(payload));
   }
 });
 

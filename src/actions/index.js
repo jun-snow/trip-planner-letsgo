@@ -21,8 +21,9 @@ export const updateTrip = (payload) => ({
   payload
 });
 
-export const showDetails = () => ({
-  type: SHOW_DETAILS
+export const showDetails = (payload) => ({
+  type: SHOW_DETAILS,
+  payload
 });
 
 export const searchTrips = (payload) => ({

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTrip, selectTrip, updateTrip } from '../../actions';
+import {
+  addTrip,
+  selectTrip,
+  updateTrip,
+  showDetails
+} from '../../actions';
 import Form from './components/Form';
 import Todos from './components/Todos';
 import styles from './Details.module.scss';
@@ -11,7 +16,8 @@ const Details = ({
   addNewTripDetails,
   selectedTrip,
   handleSelectTrip,
-  updateTripDetails
+  updateTripDetails,
+  handleShowDetails
 }) => {
   
   const [todos, setTodos] = useState([]);
@@ -27,6 +33,7 @@ const Details = ({
         selectedTrip={selectedTrip}
         handleSelectTrip={handleSelectTrip}
         updateTripDetails={updateTripDetails}
+        handleShowDetails={handleShowDetails}
       />
       <div className={styles.divider}></div>
       <Todos
@@ -52,6 +59,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateTripDetails: (payload) => {
     dispatch(updateTrip(payload));
+  },
+  handleShowDetails: () => {
+    dispatch(showDetails());
   }
 });
 

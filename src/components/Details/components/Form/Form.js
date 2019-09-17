@@ -11,7 +11,8 @@ const Form = ({
   todos,
   selectedTrip,
   handleSelectTrip,
-  updateTripDetails
+  updateTripDetails,
+  handleShowDetails
 }) => {
 
   const initialState = {
@@ -158,6 +159,8 @@ const Form = ({
 
       <FormButtons
         selectedTrip={selectedTrip}
+        handleSelectTrip={handleSelectTrip}
+        handleShowDetails={handleShowDetails}
       />
     </form>
   );

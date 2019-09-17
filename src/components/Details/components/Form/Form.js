@@ -182,7 +182,7 @@ const Form = ({
         Reminder
       </label>
 
-      <FormButtons />
+      <FormButtons selectedTrip={selectedTrip} />
     </form>
   );
 }

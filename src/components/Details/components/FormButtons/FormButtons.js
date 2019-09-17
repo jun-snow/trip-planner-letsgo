@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FormButtons = () => {
+const FormButtons = ({ selectedTrip }) => {
   return (
     <div>
       <button type='submit'>Save</button>
       <button type='button'>Cancel</button>
-      <button type='button'>Delete</button>
+      {selectedTrip && <button type='button'>Delete</button>}
     </div>
   );
 }

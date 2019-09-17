@@ -1,18 +1,23 @@
+@import '../../../../utils/variables.scss';
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@import '../../../../utils/variables.scss';
-
 .list {
   display: flex;
   flex-direction: column;
-  max-height: 10em;
+  max-height: 13em;
   max-width: 13em;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding: $padding;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: 1px solid $header;
+  border-radius: 5px;
 }
 
 .todo {
@@ -21,6 +26,10 @@
 
 .todo:hover {
   text-decoration: line-through;
+}
+
+.line {
+  text-decoration: line-through; 
 }
 
 .input {

@@ -36,19 +36,20 @@ const Todos = ({
     return (
       <div className={styles.list}>
         {filteredTodos.map(todo => {
+          const { id, completed, item } = todo;
           return (
             <label
-              key={todo.id}
-              htmlFor={todo.item}
-              className={styles.todo}
+              key={id}
+              htmlFor={id}
+              className={`${styles.todo} ${completed ? styles.line : null}`}
             >
               <input
-                id={todo.item}
+                id={id}
                 type='checkbox'
-                checked={todo.completed}
-                onChange={() => removeTodo(todo.id)}
+                checked={completed}
+                onChange={() => removeTodo(id)}
               />
-              {todo.item}
+              {item}
             </label>
           );
         })}

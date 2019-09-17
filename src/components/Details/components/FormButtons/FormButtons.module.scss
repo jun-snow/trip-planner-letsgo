@@ -1,0 +1,31 @@
+@import '../../../../utils/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.inner {
+  border-radius: 5px;
+  overflow: hidden;
+}
+.button {
+  border: 1px solid $buttons;
+  background-color: $buttons;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.button:hover {
+  border: 1px solid $buttons;
+  background-color: white;
+}
+
+.button:active {
+  transition: none;
+  transform: translateY(1px);
+}

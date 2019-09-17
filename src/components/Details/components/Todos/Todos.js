@@ -68,6 +68,7 @@ const Todos = ({
         </input>
         <button
           type='submit'
+          className={styles.button}
         >
           Add
         </button>

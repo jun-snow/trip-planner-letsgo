@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FormButtons.module.scss';
 
 const FormButtons = ({
   selectedTrip,
@@ -17,20 +18,35 @@ const FormButtons = ({
     handleShowDetails(false);
     handleSelectTrip(null);
   }
+
   return (
-    <div>
-      <button type='submit'>Save</button>
+    <div className={styles.container}>
+      <div className={styles.inner}>
       <button
-        type='button'
-        onClick={() => handleCancel()}
-      >Cancel</button>
-      {selectedTrip &&
-      <button
-        type='button'
-        onClick={() => handleDelete()}
+        type='submit'
+        className={styles.button}
       >
-        Delete
-      </button>}
+        Save
+      </button>
+      <button
+        type='button'
+        className={styles.button}
+        onClick={() => handleCancel()}
+      >
+        Cancel
+      </button>
+      {
+        selectedTrip &&
+        <button
+          type='button'
+          className={styles.button}
+          onClick={() => handleDelete()}
+        >
+          Delete
+        </button>
+      }
+      </div>
+      
     </div>
   );
 }

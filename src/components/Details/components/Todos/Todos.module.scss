@@ -4,6 +4,8 @@
   align-items: center;
 }
 
+@import '../../../../utils/variables.scss';
+
 .list {
   display: flex;
   flex-direction: column;
@@ -11,4 +13,24 @@
 
 .todo:hover {
   text-decoration: line-through;
+}
+
+.button {
+  border: 1px solid $buttons;
+  border-radius: 5px;
+  background-color: $buttons;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.button:hover {
+  border: 1px solid $buttons;
+  background-color: white;
+}
+
+.button:active {
+  transition: none;
+  transform: translateY(1px);
 }

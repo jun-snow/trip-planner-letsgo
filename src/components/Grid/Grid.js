@@ -5,7 +5,12 @@ import { showDetails } from '../../actions';
 import { getDuration } from '../../utils/helpers';
 import styles from './Grid.module.scss';
 
-const Grid = ({ trips, handleClickTrip, handleShowDetails }) => {
+const Grid = ({
+  trips,
+  handleClickTrip,
+  handleShowDetails,
+  filterTrips
+}) => {
 
   // display details panel and select unique trip id for update use
   const handleDetails = (id) => {
@@ -13,9 +18,19 @@ const Grid = ({ trips, handleClickTrip, handleShowDetails }) => {
     handleClickTrip(id);
   }
 
+  // create copy of trip state and apply filters before rendering
   const renderTrips = () => {
+    let tripList = [...trips];
+    
+    if (filterTrips) {
+      tripList = tripList.filter(trip => {
+        const { title, destination } = trip;
+        return title.includes(filterTrips) || destination.includes(filterTrips);
+      })
+    }
+
     return (
-      trips.map(trip => {
+      tripList.map(trip => {
         return (
           <tr
             key={trip.id}
@@ -52,7 +67,8 @@ const Grid = ({ trips, handleClickTrip, handleShowDetails }) => {
 
 const mapStateToProps = (state) => ({
   details: state.showDetails,
-  trips: state.trips
+  trips: state.trips,
+  filterTrips: state.filterTrips
 });
 
 const mapDispatchToProps = (dispatch) => ({

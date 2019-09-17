@@ -9,10 +9,25 @@
 .list {
   display: flex;
   flex-direction: column;
+  max-height: 10em;
+  max-width: 13em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.todo {
+  word-wrap: break-word;
 }
 
 .todo:hover {
   text-decoration: line-through;
+}
+
+.input {
+  border-radius: 5px;
+  padding: 3px;
+  border:1px solid #cccccc;
+  outline: none;
 }
 
 .button {
@@ -23,10 +38,12 @@
   outline: none;
   cursor: pointer;
   transition: all .3s;
+  margin-left: .5em;
 }
 
 .button:hover {
   border: 1px solid $buttons;
+  color: $buttons;
   background-color: white;
 }
 

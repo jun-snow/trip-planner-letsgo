@@ -63,7 +63,9 @@ const Todos = ({
         {renderTodos()}
         <input
           value={item}
+          className={styles.input}
           onChange={(e) => setItem(e.target.value)}
+          placeholder='Add item...'
         >
         </input>
         <button

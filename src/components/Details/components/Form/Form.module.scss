@@ -6,6 +6,33 @@
   padding: $padding;
 }
 
-.title > span:nth-child(2) {
-  color: #4d4d4d;
+.title {
+  padding-bottom: 1em;
+  span:nth-child(2) {
+    color: #4d4d4d;
+  }
+}
+
+.input {
+  border-radius: 5px;
+  padding: 3px;
+  border:1px solid #cccccc;
+  outline: none;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+.date {
+  font-size: .75em;
+}
+
+.select {
+  padding: 20px;
+}
+
+.reminder {
+  align-self: center;
+  font-size: .75em;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

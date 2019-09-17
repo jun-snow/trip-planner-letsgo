@@ -85,6 +85,7 @@ const Form = ({
       <input
         placeholder='Title'
         value={title}
+        className={styles.input}
         onChange={(e) => setTripDetails({
           ...tripDetails, title: e.target.value
         })}
@@ -94,6 +95,7 @@ const Form = ({
       <input
         placeholder='Destination'
         value={destination}
+        className={styles.input}
         onChange={(e) => setTripDetails({
           ...tripDetails, destination: e.target.value
         })}
@@ -103,16 +105,18 @@ const Form = ({
       <input
         placeholder='Description'
         value={description}
+        className={styles.input}
         onChange={(e) => setTripDetails({
           ...tripDetails, description: e.target.value
         })}
       />
 
-      <label htmlFor='startDate'>
-        Start Date:
+      <label htmlFor='startDate' className={styles.date}>
+        Start Date: 
         <input
           type='date'
           id='startDate'
+          className={styles.input}
           min={currentDate()}
           value={start}
           onChange={(e) => setTripDetails({
@@ -121,11 +125,12 @@ const Form = ({
         />
       </label>
 
-      <label htmlFor='endDate'>
-        End Date:
+      <label htmlFor='endDate' className={styles.date}>
+        End Date:    
         <input
           type='date'
           id='endDate'
+          className={styles.input}
           min={start}
           value={end}
           onChange={(e) => setTripDetails({
@@ -135,10 +140,11 @@ const Form = ({
       </label>
 
       <select
+        value={category}
+        className={`${styles.input} ${styles.select}`}
         onChange={(e) => setTripDetails({
           ...tripDetails, category: e.target.value
         })}
-        value={category}
       >
         <option value=''>
           None
@@ -151,7 +157,7 @@ const Form = ({
         </option>
       </select>
 
-      <label htmlFor='reminder'>
+      <label htmlFor='reminder' className={styles.reminder}>
         <input
           type='checkbox'
           id='reminder'

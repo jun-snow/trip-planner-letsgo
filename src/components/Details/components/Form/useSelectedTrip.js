@@ -10,7 +10,7 @@ export const useSelectedTrip = (trips, selectedTrip, setTripDetails) => {
       description: '',
       start: currentDate(),
       end: currentDate(),
-      category: 'None',
+      category: '',
       reminder: false
     }
     if (selectedTrip !== null) {

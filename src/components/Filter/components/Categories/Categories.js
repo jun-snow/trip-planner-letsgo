@@ -8,9 +8,12 @@ const Categories = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         Filter
+        <p>
+          Filter results by category
+        </p>
       </div>
       <div className={styles.body}>
-        <Radio >
+        <Radio>
           None
         </Radio>
         <Radio >

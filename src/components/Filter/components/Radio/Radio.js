@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { filterTrips } from '../../../../actions';
 import styles from './Radio.module.scss';
 
-const Radio = ({ children }) => {
+const Radio = ({ children, handleFilterTrips }) => {
+  
+  const filterValue = children === 'None' ? '' : children;
 
   return (
     <div className={styles.container}>
@@ -9,8 +13,9 @@ const Radio = ({ children }) => {
         type='radio'
         id={children}
         name='filter'
-        value={children}
+        value={filterValue}
         className={styles.radio}
+        onChange={() => handleFilterTrips(filterValue)}
       /> 
       <label
         htmlFor={children}
@@ -22,4 +27,10 @@ const Radio = ({ children }) => {
   );
 }
 
-export default Radio;
+const mapDispatchToProps = (dispatch) => ({
+  handleFilterTrips: (payload) => {
+    dispatch(filterTrips(payload));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Radio);

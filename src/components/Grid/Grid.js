@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { selectTrip } from '../../actions';
-import { showDetails } from '../../actions';
+import { selectTrip, showDetails } from '../../actions';
 import { getDuration } from '../../utils/helpers';
 import styles from './Grid.module.scss';
 
@@ -10,10 +9,11 @@ const Grid = ({
   details,
   handleClickTrip,
   handleShowDetails,
+  searchTrips,
   filterTrips
 }) => {
   const [activeRow, setActiveRow] = useState(null);
-
+  
   // display details panel and select unique trip id for update use
   const handleDetails = (id, i) => {
     setActiveRow(i);
@@ -25,10 +25,17 @@ const Grid = ({
   const renderTrips = () => {
     let tripList = [...trips];
     
-    if (filterTrips) {
+    if (searchTrips) {
       tripList = tripList.filter(trip => {
         const { title, destination } = trip;
-        return title.includes(filterTrips) || destination.includes(filterTrips);
+        return title.includes(searchTrips) || destination.includes(searchTrips);
+      })
+    }
+
+    if (filterTrips) {
+      tripList = tripList.filter(trip => {
+        const { category } = trip;
+        return category === filterTrips
       })
     }
 
@@ -70,6 +77,7 @@ const Grid = ({
 const mapStateToProps = (state) => ({
   details: state.showDetails,
   trips: state.trips,
+  searchTrips: state.searchTrips,
   filterTrips: state.filterTrips
 });
 

@@ -24,6 +24,7 @@ const Search = ({ handleSearchTrips }) => {
       onSubmit={(e) => submitSearch(e)}
     >
       <input
+        type='search'
         className={styles.search}
         value={search}
         onChange={handleSearch}

@@ -1,13 +1,13 @@
-import { SEARCH_TRIPS } from '../constants/action-types';
+import { FILTER_TRIPS } from '../constants/action-types';
 
-// return search string to filter trips
-const searchReducer = (state = '', action) => {
+// return search string to filter trips by category
+const filterReducer = (state = '', action) => {
   switch (action.type) {
-    case SEARCH_TRIPS:
+    case FILTER_TRIPS:
       return action.payload || '';
     default:
       return state;
   }
 };
 
-export default searchReducer;
+export default filterReducer;

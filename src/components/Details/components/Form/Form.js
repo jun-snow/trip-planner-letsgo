@@ -23,7 +23,7 @@ const Form = ({
     description: '',
     start: currentDate(),
     end: currentDate(),
-    category: 'None',
+    category: '',
     reminder: false
   }
 
@@ -59,7 +59,10 @@ const Form = ({
     // if a trip has been selected, update existing trip
     // if not, create new trip
     if (selectedTrip) {
-      updateTripDetails(selectedTrip);
+      updateTripDetails({
+        ...payload,
+        id: selectedTrip
+      });
     } else {
       addNewTripDetails(payload);
     }
@@ -132,7 +135,7 @@ const Form = ({
         })}
         value={category}
       >
-        <option value='None'>
+        <option value=''>
           None
         </option>
         <option value='Vacation'>

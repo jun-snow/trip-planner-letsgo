@@ -49,6 +49,19 @@ const Form = ({
         category: filtered.category,
         reminder: filtered.reminder
       });
+    } else {
+      const initialState = {
+        id: null,
+        title: '',
+        destination: '',
+        description: '',
+        start: currentDate(),
+        end: currentDate(),
+        category: 'None',
+        reminder: false
+      }
+      
+      setTripDetails(initialState);
     }
   }, [trips, selectedTrip]);
 
@@ -80,7 +93,7 @@ const Form = ({
 
     // initialize form and clear selected id after submission
     handleSelectTrip(null);
-    setTripDetails({...initialState});
+    setTripDetails(initialState);
   };
 
   return (

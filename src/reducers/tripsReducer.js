@@ -24,7 +24,6 @@ const tripsReducer = (state = [], action) => {
       const findId = getId(state, payload.id);
       const newState = [...state];
       newState[findId] = payload;
-      console.log(state, payload.id);
       return newState || state;
     default:
       return state;

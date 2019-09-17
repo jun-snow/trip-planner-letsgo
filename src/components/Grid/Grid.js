@@ -10,7 +10,8 @@ const Grid = ({
   handleClickTrip,
   handleShowDetails,
   searchTrips,
-  filterTrips
+  filterTrips,
+  todos
 }) => {
   const [activeRow, setActiveRow] = useState(null);
   
@@ -26,9 +27,24 @@ const Grid = ({
     let tripList = [...trips];
     
     if (searchTrips) {
+      // filter todo items with search query, then get their trip IDs
+      const todoID = todos
+        .filter(todo => todo.item.toLowerCase().includes(searchTrips))
+        .map(todo => todo.tripId);
+
+      // filter title and destination with search query
       tripList = tripList.filter(trip => {
-        const { title, destination } = trip;
-        return title.includes(searchTrips) || destination.includes(searchTrips);
+        const { title, destination, id } = trip;
+
+        // check if trip ID matches any of the todos
+        let todoMatch = false;
+        for (let i of todoID) {
+          if (i === id) return todoMatch = true;
+        }
+
+        return title.toLowerCase().includes(searchTrips)
+        || destination.toLowerCase().includes(searchTrips)
+        || todoMatch;
       })
     }
 
@@ -78,7 +94,8 @@ const mapStateToProps = (state) => ({
   details: state.showDetails,
   trips: state.trips,
   searchTrips: state.searchTrips,
-  filterTrips: state.filterTrips
+  filterTrips: state.filterTrips,
+  todos: state.todos
 });
 
 const mapDispatchToProps = (dispatch) => ({

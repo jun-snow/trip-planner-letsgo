@@ -14,8 +14,8 @@ const Search = ({ handleSearchTrips }) => {
   const submitSearch = (e) => {
     e.preventDefault();
 
+    handleSearchTrips(search.toLowerCase());
     setSearch('');
-    handleSearchTrips(search);
   }
 
   return (

@@ -4,7 +4,7 @@ import { SEARCH_TRIPS } from '../constants/action-types';
 const searchReducer = (state = '', action) => {
   switch (action.type) {
     case SEARCH_TRIPS:
-      return action.payload || '';
+      return action.payload.toLowerCase() || '';
     default:
       return state;
   }

@@ -50,6 +50,7 @@ th, td {
 }
 
 .activeRow {
+  border-bottom: 1px solid $border;
   background-color: $border;
   outline: none;
   cursor: pointer;

@@ -70,7 +70,7 @@ const Grid = ({
             className={activeRow === i && details ? styles.activeRow : styles.tableRow}
             onClick={() => handleDetails(id, i)}
           >
-            <td className={styles.first}>
+            <td className={styles.firstRow}>
               {reminder ? renderIcon(faExclamation) : ''}
             </td>
             <td>{title}</td>
@@ -87,7 +87,7 @@ const Grid = ({
       <table className={styles.table}>
         <thead>
           <tr className={styles.headerRow}>
-            <th className={styles.first}>
+            <th className={styles.firstHeader}>
               {renderIcon(faBell)}
             </th>
             <th>Trip Title</th>

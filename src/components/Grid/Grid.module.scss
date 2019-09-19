@@ -6,7 +6,7 @@
   flex-grow: 1;
   margin: $margin;
   max-height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -60,13 +60,13 @@ th, td {
   background-color: $border
 }
 
-// ::-webkit-scrollbar {
-//   -webkit-appearance: none;
-//   width: 8px;
-// }
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+}
 
-// ::-webkit-scrollbar-thumb {
-//   border-radius: 5px;
-//   background-color: #25325ddb;
-//   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-// }
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #25325ddb;
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

@@ -13,14 +13,15 @@ const Todos = ({
   const addTodo = (e) => {
     e.preventDefault();
 
-    const newTodo = {
-      tripId: selectedTrip,
-      id: uuid(),
-      item,
-      completed: false
-    };
-    
-    handleAddTodo(newTodo);
+    if (selectedTrip) {
+      const newTodo = {
+        tripId: selectedTrip,
+        id: uuid(),
+        item,
+        completed: false
+      };
+      handleAddTodo(newTodo);
+    }
     setItem('');
   }
 

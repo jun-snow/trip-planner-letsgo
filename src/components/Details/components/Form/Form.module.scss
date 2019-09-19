@@ -36,3 +36,14 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.bell {
+  color: $header;
+  margin-left: $margin;
+}
+
+.activeBell {
+  color: $header;
+  margin-left: $margin;
+  cursor: not-allowed;
+}

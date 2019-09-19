@@ -180,7 +180,13 @@ const Form = ({
             ...tripDetails, reminder: date
           })}
         />
-        <FontAwesomeIcon icon={faBell} />
+        <FontAwesomeIcon
+          icon={faBell}
+          className={reminder ? styles.activeBell : styles.bell}
+          onClick={() => setTripDetails({
+            ...tripDetails, reminder: null
+          })}
+        />
       </label>
 
       <FormButtons

@@ -6,12 +6,14 @@ import { loadState, saveState } from './localStorage';
 const savedState = loadState();
 
 // Date object is serialized in the store as string, but needs to be converted to a date object
-// is there a better way to do this...? It's either here or in the localStorage function
-savedState.trips.forEach(trip => {
-  if (trip.reminder) {
-    trip.reminder = new Date(trip.reminder);
-  }
-});
+// is there a better way to do this...?
+if (savedState) {
+  savedState.trips.forEach(trip => {
+    if (trip.reminder) {
+      trip.reminder = new Date(trip.reminder);
+    }
+  });
+}
 
 const store = createStore(rootReducer, savedState);
 

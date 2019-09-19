@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import FormButtons from '../FormButtons';
-import { useSelectedTrip, useStatusUpdate } from './hooks';
+import DatePicker from "react-datepicker";
+import { useSelectedTrip, useStatusUpdate, useReminderAlert } from './hooks';
 import { currentDate } from '../../../../utils/helpers';
 import uuid from 'uuid/v4';
 import styles from './Form.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import './DatePicker.css';
 
 const Form = ({
   trips,
@@ -24,10 +30,11 @@ const Form = ({
     start: currentDate(),
     end: currentDate(),
     category: '',
-    reminder: false,
+    reminder: null,
     status: 'Created'
   }
 
+  const [popUp, setPopUp] = useState(false);
   const [tripDetails, setTripDetails] = useState(initialState);
   const {
     title,
@@ -44,6 +51,9 @@ const Form = ({
   useSelectedTrip(trips, selectedTrip, setTripDetails);
   // update trip status based on item completion
   useStatusUpdate(trips, selectedTrip, todos, setTripDetails);
+  // display popup if a reminder is within an hour
+  useReminderAlert(popUp, setPopUp, trips);
+
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -158,15 +168,19 @@ const Form = ({
       </select>
 
       <label htmlFor='reminder' className={styles.reminder}>
-        <input
-          type='checkbox'
-          id='reminder'
-          checked={reminder}
-          onChange={() => setTripDetails({
-            ...tripDetails, reminder: !reminder
+        <DatePicker
+          selected={reminder}
+          showTimeSelect
+          dateFormat='yyyy/MM/dd h:mm aa'
+          timeFormat='HH:mm'
+          timeCaption='time'
+          minDate={new Date()}
+          placeholderText='Set reminder...'
+          onChange={date => setTripDetails({
+            ...tripDetails, reminder: date
           })}
         />
-        Reminder
+        <FontAwesomeIcon icon={faBell} />
       </label>
 
       <FormButtons

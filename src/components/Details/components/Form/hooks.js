@@ -11,12 +11,13 @@ export const useSelectedTrip = (trips, selectedTrip, setTripDetails) => {
       start: currentDate(),
       end: currentDate(),
       category: '',
-      reminder: false,
+      reminder: null,
       status: 'Created'
     }
 
     if (selectedTrip !== null) {
       const filtered = trips.filter(trip => trip.id === selectedTrip)[0];
+
       setTripDetails({
         id: filtered.id,
         title: filtered.title,
@@ -68,4 +69,23 @@ export const useStatusUpdate = (trips, selectedTrip, todos, setTripDetails) => {
       });
     }
   }, [trips, selectedTrip, todos, setTripDetails])
+}
+
+export const useReminderAlert = (popUp, setPopUp, trips) => {
+  // check for reminders every minute
+  setInterval(() => {
+    // loop through trips array, check if reminders are 1 hour before trip
+    const date = new Date();
+    if (!popUp) {
+      for (let trip of trips) {
+        if (trip.reminder) {
+          const timeDiff = date.getTime() - trip.reminder.getTime();
+          const hourDiff = timeDiff / (1000 * 3600);
+          if (hourDiff > 0 && hourDiff < 1) {
+            setPopUp(true);
+          }
+        }
+      }
+    }
+  }, 60000)
 }
